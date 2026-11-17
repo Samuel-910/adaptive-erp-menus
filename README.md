@@ -1,5 +1,7 @@
 # adaptive-erp-menus
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24322522.svg)](https://doi.org/10.5281/zenodo.24322522)
+
 Código del trabajo sobre personalización de menús de un ERP con modelos secuenciales
 (LSTM, GRU, 1D-CNN, Transformer), un puntaje de relevancia, agentes DQN y una barra de
 sugerencias, bajo control de acceso por roles (RBAC).
@@ -39,3 +41,8 @@ modelos; los resultados reentrenados pueden diferir de los del artículo.
 
 Este repositorio **no** contiene datos de participantes. Las carpetas `datos_reales/` y
 `tools/export/`, y el archivo `tools/.env` con la clave del servidor, están excluidos.
+
+## Cómo citar
+
+Versión del artículo (v1.0): https://doi.org/10.5281/zenodo.24322523 · Todas las versiones: https://doi.org/10.5281/zenodo.24322522.
+Los datos de cita están en [`CITATION.cff`](CITATION.cff).
