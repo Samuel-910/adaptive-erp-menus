@@ -20,13 +20,20 @@ El menú del ERP (9 grupos, 60 funciones, 4 roles) está definido una sola vez e
 cd fase1_datos_sinteticos/pipeline
 python -m venv venv
 venv/Scripts/pip install -r requirements.txt      # en Linux/macOS: venv/bin/pip
-python run_all_pipeline.py --sin-entrenar          # datos sintéticos + puntajes con los modelos incluidos
-cd evaluation
-python evaluacion.py                               # salidas/*.json
-python tablas.py                                   # articulo/tables/*.tex y articulo/figures/*
+venv/Scripts/python reproducir_articulo.py         # en Linux/macOS: venv/bin/python
 ```
 
-`python run_all_pipeline.py` (sin opciones) vuelve a generar los datos y reentrena todos los modelos.
+`reproducir_articulo.py` usa los modelos incluidos (no reentrena), genera los 600 usuarios
+sintéticos (semilla 42), corre la evaluación y escribe:
+
+- `evaluation/articulo/tables/*.tex` — Tablas 5–12 del artículo;
+- `evaluation/articulo/figures/*.png` — Figuras 2 y 3.
+
+Al terminar compara las salidas con las del manuscrito. Todas deben coincidir, salvo la
+latencia (Tabla 12), que depende de la máquina. Tarda alrededor de 2 minutos en CPU.
+
+`python run_all_pipeline.py` (sin opciones) vuelve a generar los datos y reentrena todos los
+modelos; los resultados reentrenados pueden diferir de los del artículo.
 
 ## Datos personales
 

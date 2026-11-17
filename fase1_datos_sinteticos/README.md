@@ -14,6 +14,9 @@ Toda la evidencia de esta fase proviene de **usuarios simulados**.
 
 Las salidas en `evaluation/salidas/` son las que se usaron en el manuscrito.
 
+**Para regenerar todas las tablas y figuras del artículo:** `python pipeline/reproducir_articulo.py`
+(sin reentrenar; compara el resultado con las salidas del manuscrito).
+
 Opciones de `run_all_pipeline.py`:
 
 - sin opciones: genera los datos sintéticos y reentrena todo;
