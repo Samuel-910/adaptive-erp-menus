@@ -1,0 +1,26 @@
+# Entornos y cachés
+venv/
+.venv/
+__pycache__/
+*.pyc
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Datos de participantes reales: nunca al repositorio (privacidad / ética)
+datos_reales/
+**/tools/export/
+**/tools/.env
+.env
+.env.local
+menus_preview.html
+
+# Datos sintéticos: se regeneran con el simulador (semilla 42)
+datos_sinteticos/
+
+# Salidas regenerables del pipeline (pueden contener datos reales tras --solo-reales)
+fase1_datos_sinteticos/pipeline/OE1_Baseline/output_oe1/
+fase1_datos_sinteticos/pipeline/OE2_Modelado/output_oe2/scores_relevancia.json
+fase1_datos_sinteticos/pipeline/OE3_Agente_DQN/output_oe3/*.json
+fase1_datos_sinteticos/pipeline/pipeline_execution.log
+fase1_datos_sinteticos/pipeline/evaluation/articulo/
