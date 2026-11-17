@@ -12,7 +12,7 @@ Toda la evidencia de esta fase proviene de **usuarios simulados**.
 | `OE3_Agente_DQN/` | Agentes DQN, uno por tamaño de grupo, con acciones de “mover al inicio”. Incluye los agentes entrenados (`output_oe3/*.pt`). |
 | `evaluation/` | Evaluación del artículo: RQ1–RQ4, ablación, sensibilidad de pesos y deriva. `evaluacion.py` escribe `salidas/`; `tablas.py` escribe las tablas y figuras del manuscrito en `articulo/`. |
 
-Las salidas en `evaluation/salidas/` son las que se usaron en el manuscrito.
+Las salidas en `evaluation/salidas/` son las que se usaron en el manuscrito. Qué archivo respalda cada tabla y figura, qué significa cada columna y dónde están los registros de entrenamiento: [`pipeline/evaluation/SALIDAS.md`](pipeline/evaluation/SALIDAS.md).
 
 **Para regenerar todas las tablas y figuras del artículo:** `python pipeline/reproducir_articulo.py`
 (sin reentrenar; compara el resultado con las salidas del manuscrito).

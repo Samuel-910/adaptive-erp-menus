@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "Si usas este código, cítalo con estos datos."
 title: "adaptive-erp-menus: personalización adaptativa de menús ERP (simulación y estudio con usuarios)"
 type: software
-version: 1.0.0
+version: 1.0.1
 date-released: 2026-11-17
 license: MIT
 repository-code: "https://github.com/Samuel-910/adaptive-erp-menus"
