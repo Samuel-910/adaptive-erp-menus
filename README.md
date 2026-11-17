@@ -44,5 +44,5 @@ Este repositorio **no** contiene datos de participantes. Las carpetas `datos_rea
 
 ## Cómo citar
 
-Versión del artículo (v1.0): https://doi.org/10.5281/zenodo.24322523 · Todas las versiones: https://doi.org/10.5281/zenodo.24322522.
+Versión del artículo (v1.0.1): https://doi.org/10.5281/zenodo.24326036 · Todas las versiones: https://doi.org/10.5281/zenodo.24322522.
 Los datos de cita están en [`CITATION.cff`](CITATION.cff).
