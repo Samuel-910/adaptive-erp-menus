@@ -2,8 +2,7 @@
 SIMULADOR ESTOCÁSTICO DE NAVEGACIÓN — MENÚ REAL DEL ERP
 =======================================================
 
-Versión del generador de version_anterior/00_Generador_Datos/simulador_datos.py,
-pero usando SOLO las 60 funciones reales del menú del ERP (catalog.json de la
+Generador de registros sintéticos que usa SOLO las 60 funciones reales del menú del ERP (catalog.json de la
 app del estudio) y los 4 roles del estudio (Ventas, Compras, Almacen, Administrador).
 
 Qué simula (igual que la app del estudio):

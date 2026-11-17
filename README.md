@@ -8,7 +8,7 @@ El trabajo tiene dos fases:
 
 | Fase | Carpeta | Datos | Qué contiene |
 |---|---|---|---|
-| **1** | [`fase1_datos_sinteticos/`](fase1_datos_sinteticos/) | Usuarios **simulados** | Simulador, pipeline OE1–OE3 (predictores y agentes DQN) y la evaluación que genera las tablas y figuras del artículo. Incluye la versión anterior del pipeline, con un aviso. |
+| **1** | [`fase1_datos_sinteticos/`](fase1_datos_sinteticos/) | Usuarios **simulados** | Simulador, pipeline OE1–OE3 (predictores y agentes DQN) y la evaluación que genera las tablas y figuras del artículo. |
 | **2** | [`fase2_datos_reales/`](fase2_datos_reales/) | Participantes **reales** | App web del estudio con usuarios (dos sesiones: menú estático y menú adaptado), esquema de la base de datos y scripts para exportar los registros y subir los menús adaptados. |
 
 El menú del ERP (9 grupos, 60 funciones, 4 roles) está definido una sola vez en

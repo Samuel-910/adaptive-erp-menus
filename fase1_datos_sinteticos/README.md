@@ -19,9 +19,3 @@ Opciones de `run_all_pipeline.py`:
 - sin opciones: genera los datos sintéticos y reentrena todo;
 - `--sin-entrenar`: reutiliza los modelos incluidos;
 - `--solo-reales`: usa los datos de la fase 2 (`datos_reales/`, no incluidos) para generar menús adaptados con los modelos ya entrenados.
-
-## `version_anterior/` — versión previa (no usar para resultados)
-
-Pipeline anterior al artículo, conservado solo como historial. **Lee su
-[AVISO](version_anterior/AVISO.md) antes de usarlo**: su evaluación (OE5) no mide M2, M3 ni
-la satisfacción, sino que las proyecta o las genera.
