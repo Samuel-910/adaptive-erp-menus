@@ -6,6 +6,12 @@ típicas por rol, barra de 3):
   zipf       exponente s del perfil de uso w_i ∝ 1/i^s            (0.5 … 2)
   funciones  número de funciones típicas por rol                   (5 … 15)
   barra      número de funciones en la barra de sugerencias        (1 … 5)
+  t_clic     factor sobre el tiempo por clic de la Tabla 2 (media y d.e.)   (0.5 … 1.5)
+  t_scan     factor sobre el tiempo por ítem escaneado de la Tabla 2        (0.5 … 1.5)
+  error      factor sobre la probabilidad de visita errónea de la Tabla 2   (0 … 2)
+
+Los factores de la Tabla 2 se aplican a los tres niveles de experiencia, tanto al generar la
+población como al medir las tareas de evaluación.
 
 Para cada valor se regenera la población de 600 usuarios (semilla 42), se calculan los
 menús con los modelos YA entrenados (no se reentrena nada) y se miden M1, M2 y M3 en las 40
@@ -18,7 +24,7 @@ Políticas: Static, Frequency, Score-greedy, Proposed y "solo barra" (variante i
 ablación). También se informa la proporción de tareas cuyo destino está en la barra.
 
 Salidas: salidas/sensibilidad_<parametro>.json
-Uso:     python sensibilidad.py                 (los tres parámetros)
+Uso:     python sensibilidad.py                 (todos los parámetros)
          python sensibilidad.py --param barra
 """
 import argparse
@@ -32,11 +38,14 @@ import comun as C
 import evaluacion as E
 
 POLITICAS = ["Static", "Frequency", "Score-greedy", "Proposed", "Solo barra"]
-BASE = {"s": 1.0, "n_funciones": 8, "k_barra": 3}
+BASE = {"s": 1.0, "n_funciones": 8, "k_barra": 3, "f_clic": 1.0, "f_scan": 1.0, "f_error": 1.0}
 BARRIDOS = {
     "zipf": ("s", [0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0]),
     "funciones": ("n_funciones", [5, 6, 7, 8, 10, 12, 15]),
     "barra": ("k_barra", [1, 2, 3, 4, 5]),
+    "t_clic": ("f_clic", [0.5, 0.75, 1.0, 1.25, 1.5]),
+    "t_scan": ("f_scan", [0.5, 0.75, 1.0, 1.25, 1.5]),
+    "error": ("f_error", [0.0, 0.5, 1.0, 1.5, 2.0]),
 }
 _MENU = C.sim.MenuERP(C.sim.CONFIG_ERP)
 
@@ -74,7 +83,19 @@ def reduccion_ic(base, pol, n=2000, semilla=0):
     return float(red), float(np.percentile(b, 2.5)), float(np.percentile(b, 97.5))
 
 
-def evaluar(net, envs, ags, s=1.0, n_funciones=8, k_barra=3):
+def evaluar(net, envs, ags, f_clic=1.0, f_scan=1.0, f_error=1.0, **kw):
+    original = C.sim.EXPERIENCIA
+    C.sim.EXPERIENCIA = {k: {**v, "clic": (v["clic"][0] * f_clic, v["clic"][1] * f_clic),
+                             "scan": v["scan"] * f_scan, "error": v["error"] * f_error}
+                         for k, v in original.items()}
+    try:
+        out = _evaluar(net, envs, ags, **kw)
+    finally:
+        C.sim.EXPERIENCIA = original
+    return {**out, "f_clic": f_clic, "f_scan": f_scan, "f_error": f_error}
+
+
+def _evaluar(net, envs, ags, s=1.0, n_funciones=8, k_barra=3):
     original = C.sim.perfil_estudio
     C.sim.perfil_estudio = perfil_parcheado(s, n_funciones)
     try:
@@ -120,9 +141,11 @@ def evaluar(net, envs, ags, s=1.0, n_funciones=8, k_barra=3):
         d = {}
         for m in ("M1", "M2", "M3"):
             d[m] = {"media": float(np.mean(res[n][m]))}
-            if n != "Static":
+            if n != "Static" and np.mean(res["Static"][m]) > 0:   # sin errores (f_error = 0) M3 = 0
                 red, lo, hi = reduccion_ic(res["Static"][m], res[n][m])
                 d[m].update({"reduccion_pct": red, "ic95": [lo, hi]})
+            elif n != "Static":
+                d[m].update({"reduccion_pct": None, "ic95": None})
         out["politicas"][n] = d
     return out
 
