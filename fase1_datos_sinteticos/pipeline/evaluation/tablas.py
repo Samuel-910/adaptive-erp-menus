@@ -353,7 +353,39 @@ def figura_sensibilidad():
     plt.close(fig)
 
 
+def tabla_memoria():
+    """Reducción de M2 con memoria espacial y costo de reaprendizaje (salidas/memoria_espacial.json)."""
+    ruta = C.SALIDAS / "memoria_espacial.json"
+    if not ruta.exists():
+        return
+    d = json.loads(ruta.read_text(encoding="utf-8"))
+    cols = [("Solo barra", r"Bar only"), ("Proposed", r"\textsc{Proposed}"), ("Score-greedy", r"\textsc{Score-greedy}"),
+            ("Sin barra", r"Without bar"), ("Frequency", r"\textsc{Frequency}")]
+    lin = d["modelo_lineal"]
+    filas = [r"\multicolumn{3}{l}{Linear visual search (main model)} & " + " & ".join(f"{lin[c]:.1f}" for c, _ in cols) + r" \\",
+             r"\midrule"]
+    for x in d["memoria_espacial"]:
+        filas.append(f"{x['b_hh']:.2f} & {x['c_reaprendizaje']:.1f} & {x['M2_static_s']:.2f} & "
+                     + " & ".join(f"{x['reduccion_M2_pct'][c]:.1f}" for c, _ in cols) + r" \\")
+    mov = d["tareas_con_item_movido"]
+    guardar("tab_memory.tex", r"""\begin{table}[htbp]
+\centering\scriptsize
+\setlength{\tabcolsep}{4pt}
+\caption{Reduction (\%) of the mean search time $M_2$ with respect to \textsc{Static} when the evaluation models spatial memory and relearning ($n=600$ users; negative values: slower than \textsc{Static}). $b$: Hick--Hyman slope (s/bit); $c$: relearning cost per task whose target was moved (s); $M_2^{\textsc{Static}}$: mean search time of the static menu (s). The target had been moved in """ +
+          f"{100 * mov['Proposed']:.0f}" + r"""\% of the tasks with \textsc{Proposed} and in """ + f"{100 * mov['Sin barra']:.0f}" + r"""\% without the bar; the bar alone moves no item. Clicks are not affected by this model.}\label{tab:memory}
+\begin{tabular}{ccc""" + "c" * len(cols) + r"""}
+\toprule
+$b$ & $c$ & $M_2^{\textsc{Static}}$ & """ + " & ".join(rf"\textbf{{{t}}}" for _, t in cols) + r""" \\
+\midrule
+""" + "\n".join(filas) + r"""
+\bottomrule
+\end{tabular}
+\end{table}
+""")
+
+
 if __name__ == "__main__":
     tabla_corpus(); tabla_rq1(); tabla_dqn(); tabla_politicas(); tabla_ablacion(); tabla_subgrupos(); tabla_latencia(); tabla_calibracion()
+    tabla_memoria()
     figura_curvas(); figura_politicas(); figura_sensibilidad()
     print("[OK]", sorted(p.name for p in TAB.iterdir()), sorted(p.name for p in FIG.iterdir()))
