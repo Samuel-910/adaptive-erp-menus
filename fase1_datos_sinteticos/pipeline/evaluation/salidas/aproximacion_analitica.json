@@ -1,0 +1,390 @@
+{
+  "resumen": {
+    "dM1_analitica_q_perfil": {
+      "error_medio": -1.5139659775397571,
+      "error_abs_max": 3.954803001179272,
+      "r": 0.9860165267116475
+    },
+    "dM1_analitica_q_simulado": {
+      "error_medio": -2.8875411449484143,
+      "error_abs_max": 5.271288652118539,
+      "r": 0.9888096983462398
+    }
+  },
+  "filas": [
+    {
+      "parametro": "zipf",
+      "valor": 0.5,
+      "profundidad_media": 2.125,
+      "M1_static": 2.3120416666666666,
+      "q_perfil": 0.49739043258219473,
+      "q_simulado": 0.45220833333333343,
+      "dM1_analitica_q_perfil": 24.20216922222289,
+      "dM1_analitica_q_simulado": 22.00368541512733,
+      "dM1_simulacion": 24.35798086107154
+    },
+    {
+      "parametro": "zipf",
+      "valor": 0.75,
+      "profundidad_media": 2.125,
+      "M1_static": 2.3147083333333334,
+      "q_perfil": 0.5590965131949173,
+      "q_simulado": 0.5290416666666666,
+      "dM1_analitica_q_perfil": 27.173340514936665,
+      "dM1_analitica_q_simulado": 25.712607779957874,
+      "dM1_simulacion": 28.547513185606533
+    },
+    {
+      "parametro": "zipf",
+      "valor": 1.0,
+      "profundidad_media": 2.125,
+      "M1_static": 2.313791666666667,
+      "q_perfil": 0.6180962378517489,
+      "q_simulado": 0.588125,
+      "dM1_analitica_q_perfil": 30.05276047972703,
+      "dM1_analitica_q_simulado": 28.595514217284038,
+      "dM1_simulacion": 31.63998487331402
+    },
+    {
+      "parametro": "zipf",
+      "valor": 1.25,
+      "profundidad_media": 2.125,
+      "M1_static": 2.3144583333333335,
+      "q_perfil": 0.6726607504168942,
+      "q_simulado": 0.6480416666666667,
+      "dM1_analitica_q_perfil": 32.69634770780806,
+      "dM1_analitica_q_simulado": 31.499675950096318,
+      "dM1_simulacion": 34.47890975210183
+    },
+    {
+      "parametro": "zipf",
+      "valor": 1.5,
+      "profundidad_media": 2.125,
+      "M1_static": 2.3195000000000006,
+      "q_perfil": 0.7217590568879882,
+      "q_simulado": 0.7052083333333333,
+      "dM1_analitica_q_perfil": 35.00663673201063,
+      "dM1_analitica_q_simulado": 34.20389631386074,
+      "dM1_simulacion": 37.38952360422506
+    },
+    {
+      "parametro": "zipf",
+      "valor": 1.75,
+      "profundidad_media": 2.125,
+      "M1_static": 2.3185416666666665,
+      "q_perfil": 0.7650127139134582,
+      "q_simulado": 0.7484166666666666,
+      "dM1_analitica_q_perfil": 37.11985492975715,
+      "dM1_analitica_q_simulado": 36.31458352053195,
+      "dM1_simulacion": 39.64237577500225
+    },
+    {
+      "parametro": "zipf",
+      "valor": 2.0,
+      "profundidad_media": 2.125,
+      "M1_static": 2.3223750000000005,
+      "q_perfil": 0.8025241333554436,
+      "q_simulado": 0.789375,
+      "dM1_analitica_q_perfil": 38.8757048291027,
+      "dM1_analitica_q_simulado": 38.23873728403035,
+      "dM1_simulacion": 41.79449916572475
+    },
+    {
+      "parametro": "funciones",
+      "valor": 5,
+      "profundidad_media": 2.15,
+      "M1_static": 2.3338333333333336,
+      "q_perfil": 0.7533333333333334,
+      "q_simulado": 0.7285416666666666,
+      "dM1_analitica_q_perfil": 37.12061701064057,
+      "dM1_analitica_q_simulado": 35.89900378490322,
+      "dM1_simulacion": 39.40941226879955
+    },
+    {
+      "parametro": "funciones",
+      "valor": 6,
+      "profundidad_media": 2.1666666666666665,
+      "M1_static": 2.351625,
+      "q_perfil": 0.6939655172413794,
+      "q_simulado": 0.6687916666666667,
+      "dM1_analitica_q_perfil": 34.42838193936573,
+      "dM1_analitica_q_simulado": 33.1794799104638,
+      "dM1_simulacion": 36.17356792289019
+    },
+    {
+      "parametro": "funciones",
+      "valor": 7,
+      "profundidad_media": 2.142857142857143,
+      "M1_static": 2.332875,
+      "q_perfil": 0.651005178190679,
+      "q_simulado": 0.6171666666666666,
+      "dM1_analitica_q_perfil": 31.8922324570414,
+      "dM1_analitica_q_simulado": 30.234510350247362,
+      "dM1_simulacion": 32.897533444069374
+    },
+    {
+      "parametro": "funciones",
+      "valor": 8,
+      "profundidad_media": 2.125,
+      "M1_static": 2.313791666666667,
+      "q_perfil": 0.6180962378517489,
+      "q_simulado": 0.588125,
+      "dM1_analitica_q_perfil": 30.05276047972703,
+      "dM1_analitica_q_simulado": 28.595514217284038,
+      "dM1_simulacion": 31.63998487331402
+    },
+    {
+      "parametro": "funciones",
+      "valor": 10,
+      "profundidad_media": 2.0999999999999996,
+      "M1_static": 2.288,
+      "q_perfil": 0.5702965191880303,
+      "q_simulado": 0.53875,
+      "dM1_analitica_q_perfil": 27.41810188403991,
+      "dM1_analitica_q_simulado": 25.9014423076923,
+      "dM1_simulacion": 28.385416666666664
+    },
+    {
+      "parametro": "funciones",
+      "valor": 12,
+      "profundidad_media": 2.0833333333333335,
+      "M1_static": 2.2671249999999996,
+      "q_perfil": 0.5366572513525071,
+      "q_simulado": 0.5027499999999999,
+      "dM1_analitica_q_perfil": 25.643874465025803,
+      "dM1_analitica_q_simulado": 24.023634926761137,
+      "dM1_simulacion": 26.211611622649812
+    },
+    {
+      "parametro": "funciones",
+      "valor": 15,
+      "profundidad_media": 2.083333333333333,
+      "M1_static": 2.2519166666666663,
+      "q_perfil": 0.5007642492422659,
+      "q_simulado": 0.46537500000000004,
+      "dM1_analitica_q_perfil": 24.090349850680738,
+      "dM1_analitica_q_simulado": 22.38787329312067,
+      "dM1_simulacion": 23.92591496132923
+    },
+    {
+      "parametro": "barra",
+      "valor": 1,
+      "profundidad_media": 2.125,
+      "M1_static": 2.313791666666667,
+      "q_perfil": 0.29318343435711625,
+      "q_simulado": 0.28783333333333333,
+      "dM1_analitica_q_perfil": 14.255015626662836,
+      "dM1_analitica_q_simulado": 13.994885739496853,
+      "dM1_simulacion": 14.797140336028535
+    },
+    {
+      "parametro": "barra",
+      "valor": 2,
+      "profundidad_media": 2.125,
+      "M1_static": 2.313791666666667,
+      "q_perfil": 0.48244217940469336,
+      "q_simulado": 0.46375,
+      "dM1_analitica_q_perfil": 23.45705793867699,
+      "dM1_analitica_q_simulado": 22.54821631160973,
+      "dM1_simulacion": 25.14991626298825
+    },
+    {
+      "parametro": "barra",
+      "valor": 3,
+      "profundidad_media": 2.125,
+      "M1_static": 2.313791666666667,
+      "q_perfil": 0.6180962378517489,
+      "q_simulado": 0.588125,
+      "dM1_analitica_q_perfil": 30.05276047972703,
+      "dM1_analitica_q_simulado": 28.595514217284038,
+      "dM1_simulacion": 31.63998487331402
+    },
+    {
+      "parametro": "barra",
+      "valor": 4,
+      "profundidad_media": 2.125,
+      "M1_static": 2.313791666666667,
+      "q_perfil": 0.7233923673427922,
+      "q_simulado": 0.6885833333333333,
+      "dM1_analitica_q_perfil": 35.1724152604048,
+      "dM1_analitica_q_simulado": 33.47994813707658,
+      "dM1_simulacion": 36.92712178783022
+    },
+    {
+      "parametro": "barra",
+      "valor": 5,
+      "profundidad_media": 2.125,
+      "M1_static": 2.313791666666667,
+      "q_perfil": 0.8093359520503877,
+      "q_simulado": 0.7777083333333333,
+      "dM1_analitica_q_perfil": 39.35112046489432,
+      "dM1_analitica_q_simulado": 37.813338495615056,
+      "dM1_simulacion": 41.53535862851382
+    },
+    {
+      "parametro": "t_clic",
+      "valor": 0.5,
+      "profundidad_media": 2.125,
+      "M1_static": 2.313791666666667,
+      "q_perfil": 0.6180962378517489,
+      "q_simulado": 0.588125,
+      "dM1_analitica_q_perfil": 30.05276047972703,
+      "dM1_analitica_q_simulado": 28.595514217284038,
+      "dM1_simulacion": 31.63998487331402
+    },
+    {
+      "parametro": "t_clic",
+      "valor": 0.75,
+      "profundidad_media": 2.125,
+      "M1_static": 2.313791666666667,
+      "q_perfil": 0.6180962378517489,
+      "q_simulado": 0.588125,
+      "dM1_analitica_q_perfil": 30.05276047972703,
+      "dM1_analitica_q_simulado": 28.595514217284038,
+      "dM1_simulacion": 31.63998487331402
+    },
+    {
+      "parametro": "t_clic",
+      "valor": 1.0,
+      "profundidad_media": 2.125,
+      "M1_static": 2.313791666666667,
+      "q_perfil": 0.6180962378517489,
+      "q_simulado": 0.588125,
+      "dM1_analitica_q_perfil": 30.05276047972703,
+      "dM1_analitica_q_simulado": 28.595514217284038,
+      "dM1_simulacion": 31.63998487331402
+    },
+    {
+      "parametro": "t_clic",
+      "valor": 1.25,
+      "profundidad_media": 2.125,
+      "M1_static": 2.313791666666667,
+      "q_perfil": 0.6180962378517489,
+      "q_simulado": 0.588125,
+      "dM1_analitica_q_perfil": 30.05276047972703,
+      "dM1_analitica_q_simulado": 28.595514217284038,
+      "dM1_simulacion": 31.63998487331402
+    },
+    {
+      "parametro": "t_clic",
+      "valor": 1.5,
+      "profundidad_media": 2.125,
+      "M1_static": 2.313791666666667,
+      "q_perfil": 0.6180962378517489,
+      "q_simulado": 0.588125,
+      "dM1_analitica_q_perfil": 30.05276047972703,
+      "dM1_analitica_q_simulado": 28.595514217284038,
+      "dM1_simulacion": 31.63998487331402
+    },
+    {
+      "parametro": "t_scan",
+      "valor": 0.5,
+      "profundidad_media": 2.125,
+      "M1_static": 2.313791666666667,
+      "q_perfil": 0.6180962378517489,
+      "q_simulado": 0.588125,
+      "dM1_analitica_q_perfil": 30.05276047972703,
+      "dM1_analitica_q_simulado": 28.595514217284038,
+      "dM1_simulacion": 31.63998487331402
+    },
+    {
+      "parametro": "t_scan",
+      "valor": 0.75,
+      "profundidad_media": 2.125,
+      "M1_static": 2.313791666666667,
+      "q_perfil": 0.6180962378517489,
+      "q_simulado": 0.588125,
+      "dM1_analitica_q_perfil": 30.05276047972703,
+      "dM1_analitica_q_simulado": 28.595514217284038,
+      "dM1_simulacion": 31.63998487331402
+    },
+    {
+      "parametro": "t_scan",
+      "valor": 1.0,
+      "profundidad_media": 2.125,
+      "M1_static": 2.313791666666667,
+      "q_perfil": 0.6180962378517489,
+      "q_simulado": 0.588125,
+      "dM1_analitica_q_perfil": 30.05276047972703,
+      "dM1_analitica_q_simulado": 28.595514217284038,
+      "dM1_simulacion": 31.63998487331402
+    },
+    {
+      "parametro": "t_scan",
+      "valor": 1.25,
+      "profundidad_media": 2.125,
+      "M1_static": 2.313791666666667,
+      "q_perfil": 0.6180962378517489,
+      "q_simulado": 0.588125,
+      "dM1_analitica_q_perfil": 30.05276047972703,
+      "dM1_analitica_q_simulado": 28.595514217284038,
+      "dM1_simulacion": 31.63998487331402
+    },
+    {
+      "parametro": "t_scan",
+      "valor": 1.5,
+      "profundidad_media": 2.125,
+      "M1_static": 2.313791666666667,
+      "q_perfil": 0.6180962378517489,
+      "q_simulado": 0.588125,
+      "dM1_analitica_q_perfil": 30.05276047972703,
+      "dM1_analitica_q_simulado": 28.595514217284038,
+      "dM1_simulacion": 31.63998487331402
+    },
+    {
+      "parametro": "error",
+      "valor": 0.0,
+      "profundidad_media": 2.125,
+      "M1_static": 2.1277083333333335,
+      "q_perfil": 0.6180962378517489,
+      "q_simulado": 0.5880833333333333,
+      "dM1_analitica_q_perfil": 32.681089634773755,
+      "dM1_analitica_q_simulado": 31.094193674728285,
+      "dM1_simulacion": 31.4344462939391
+    },
+    {
+      "parametro": "error",
+      "valor": 0.5,
+      "profundidad_media": 2.125,
+      "M1_static": 2.2187083333333333,
+      "q_perfil": 0.6180962378517489,
+      "q_simulado": 0.5860833333333333,
+      "dM1_analitica_q_perfil": 31.34067949068944,
+      "dM1_analitica_q_simulado": 29.717459482807186,
+      "dM1_simulacion": 31.350823489643
+    },
+    {
+      "parametro": "error",
+      "valor": 1.0,
+      "profundidad_media": 2.125,
+      "M1_static": 2.313791666666667,
+      "q_perfil": 0.6180962378517489,
+      "q_simulado": 0.588125,
+      "dM1_analitica_q_perfil": 30.05276047972703,
+      "dM1_analitica_q_simulado": 28.595514217284038,
+      "dM1_simulacion": 31.63998487331402
+    },
+    {
+      "parametro": "error",
+      "valor": 1.5,
+      "profundidad_media": 2.125,
+      "M1_static": 2.413416666666667,
+      "q_perfil": 0.6180962378517489,
+      "q_simulado": 0.5900833333333333,
+      "dM1_analitica_q_perfil": 28.812192987115807,
+      "dM1_analitica_q_simulado": 27.506387900970264,
+      "dM1_simulacion": 31.627015641725098
+    },
+    {
+      "parametro": "error",
+      "valor": 2.0,
+      "profundidad_media": 2.125,
+      "M1_static": 2.5184583333333332,
+      "q_perfil": 0.6180962378517489,
+      "q_simulado": 0.588625,
+      "dM1_analitica_q_perfil": 27.610473374910608,
+      "dM1_analitica_q_simulado": 26.29398772397134,
+      "dM1_simulacion": 31.56527637608988
+    }
+  ]
+}
