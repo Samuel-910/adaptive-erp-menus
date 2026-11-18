@@ -23,7 +23,14 @@ Análisis de los supuestos del simulador (desde la versión 1.1), en `pipeline/e
 - `python analitica.py`: aproximación analítica de la reducción de clics frente a la simulación (`salidas/aproximacion_analitica.json`);
 - `python calibracion.py --piloto <task_results.csv>`: sesión piloto frente a usuarios simulados (`salidas/calibracion.json`, tabla `tab_calibration.tex`); los registros del piloto no se incluyen, solo los valores agregados.
 
-`tablas.py` (y por tanto `reproducir_articulo.py`) arma la figura y la tabla a partir de esos JSON ya guardados.
+Análisis agregados en la revisión (versión 1.2):
+
+- `python memoria_espacial.py`: modelo secundario con memoria espacial y costo de reaprendizaje (`salidas/memoria_espacial.json`, tabla `tab_memory.tex`);
+- `python arboles_sinteticos.py`: 36 árboles de menú sintéticos de 20 a 300 funciones (`salidas/arboles_sinteticos.json`, tabla `tab_trees.tex`);
+- `python montecarlo.py`: error de Monte Carlo y umbral de relevancia (`salidas/montecarlo.json`, columna MCSE de la Tabla 8);
+- `python multisemilla_entrenar.py` (GPU, unas 2 h) y `python multisemilla_evaluar.py`: predictores y agentes con cinco semillas, validación partida por usuario (`salidas/multisemilla.json`, tabla `tab_seeds.tex`).
+
+`tablas.py` (y por tanto `reproducir_articulo.py`) arma las tablas y figuras a partir de esos JSON ya guardados.
 
 Opciones de `run_all_pipeline.py`:
 

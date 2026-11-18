@@ -2,7 +2,7 @@
   "title": "adaptive-erp-menus: adaptive ERP menu personalization (simulation study and user study)",
   "description": "Code for the study on ERP menu personalization with sequential next-route predictors (LSTM, GRU, 1D-CNN, Transformer), a composite relevance score, DQN agents and a suggestion bar under role-based access control. Phase 1 (fase1_datos_sinteticos/) contains the simulator, the OE1-OE3 pipeline with the trained models and the evaluation that regenerates every table and figure of the article (python fase1_datos_sinteticos/pipeline/reproducir_articulo.py). All evidence in phase 1 comes from simulated users. Phase 2 (fase2_datos_reales/) contains the web app, database schema and scripts of the study with real participants; no participant data is included.",
   "upload_type": "software",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "license": "MIT",
   "creators": [
     {"name": "Turpo Cauna, José Samuel", "affiliation": "Universidad Peruana Unión"},

@@ -24,3 +24,8 @@ fase1_datos_sinteticos/pipeline/OE2_Modelado/output_oe2/scores_relevancia.json
 fase1_datos_sinteticos/pipeline/OE3_Agente_DQN/output_oe3/*.json
 fase1_datos_sinteticos/pipeline/pipeline_execution.log
 fase1_datos_sinteticos/pipeline/evaluation/articulo/
+
+# Pesos de las corridas multisemilla (observación 7): se regeneran con multisemilla_entrenar.py
+fase1_datos_sinteticos/pipeline/evaluation/multisemilla/**/*.pth
+fase1_datos_sinteticos/pipeline/evaluation/multisemilla/**/*.pt
+fase1_datos_sinteticos/pipeline/evaluation/multisemilla_*.log
