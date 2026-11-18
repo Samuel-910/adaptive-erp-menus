@@ -59,7 +59,7 @@ Todas las políticas se evaluaron con las mismas tareas y los mismos números al
 | `dqn.json` | Calidad de las cabeceras ordenadas por los agentes DQN, por tamaño de grupo (grupos evaluados, % óptimo, φ medio y mínimo, pasos). |
 | `rq2.json` | Resúmenes estadísticos de las Tablas 8–11 calculados a partir de `rq2_por_usuario.csv`. |
 | `rq2_dqn_optimo.json` | Porcentaje de grupos en los que el agente alcanza el orden óptimo durante la evaluación de políticas. |
-| `sensibilidad_zipf.json` | Sensibilidad al exponente Zipf *s* del perfil (0.5–2): para cada *s*, proporción de tareas servidas por la barra y M1–M3 de Static, Frequency, Score-greedy, Proposed y solo barra, con reducción frente a Static e IC 95 %. Lo genera `sensibilidad_zipf.py` (no lo corre `reproducir_articulo.py`). |
+| `sensibilidad_{zipf,funciones,barra}.json` | Sensibilidad (observación 4): un parámetro a la vez, los demás como en el artículo (*s* = 1, 8 funciones típicas, barra de 3). `zipf`: exponente *s* del perfil (0.5–2); `funciones`: funciones típicas por rol (5–15); `barra`: tamaño de la barra (1–5). Para cada valor: proporción de tareas servidas por la barra y M1–M3 de Static, Frequency, Score-greedy, Proposed y solo barra, con reducción frente a Static e IC 95 %. Los genera `sensibilidad.py` (no lo corre `reproducir_articulo.py`). |
 | `rq4.json` | Latencia y tamaño (carga de modelos, generación del menú, bytes del menú, tamaño de modelos y agentes). Medido en la laptop del experimento; en otra máquina cambia. |
 
 ## Registros de entrenamiento

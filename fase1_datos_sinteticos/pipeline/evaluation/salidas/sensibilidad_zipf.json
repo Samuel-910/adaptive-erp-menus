@@ -1,8 +1,16 @@
 {
+  "parametro": "s",
+  "base": {
+    "s": 1.0,
+    "n_funciones": 8,
+    "k_barra": 3
+  },
   "modelo": "lstm",
   "resultados": [
     {
       "s": 0.5,
+      "n_funciones": 8,
+      "k_barra": 3,
       "n_usuarios": 600,
       "tareas_en_barra": 0.45220833333333343,
       "politicas": {
@@ -125,6 +133,8 @@
     },
     {
       "s": 0.75,
+      "n_funciones": 8,
+      "k_barra": 3,
       "n_usuarios": 600,
       "tareas_en_barra": 0.5290416666666666,
       "politicas": {
@@ -247,6 +257,8 @@
     },
     {
       "s": 1.0,
+      "n_funciones": 8,
+      "k_barra": 3,
       "n_usuarios": 600,
       "tareas_en_barra": 0.588125,
       "politicas": {
@@ -369,6 +381,8 @@
     },
     {
       "s": 1.25,
+      "n_funciones": 8,
+      "k_barra": 3,
       "n_usuarios": 600,
       "tareas_en_barra": 0.6480416666666667,
       "politicas": {
@@ -491,6 +505,8 @@
     },
     {
       "s": 1.5,
+      "n_funciones": 8,
+      "k_barra": 3,
       "n_usuarios": 600,
       "tareas_en_barra": 0.7052083333333333,
       "politicas": {
@@ -613,6 +629,8 @@
     },
     {
       "s": 1.75,
+      "n_funciones": 8,
+      "k_barra": 3,
       "n_usuarios": 600,
       "tareas_en_barra": 0.7484166666666666,
       "politicas": {
@@ -735,6 +753,8 @@
     },
     {
       "s": 2.0,
+      "n_funciones": 8,
+      "k_barra": 3,
       "n_usuarios": 600,
       "tareas_en_barra": 0.789375,
       "politicas": {
