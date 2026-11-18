@@ -384,8 +384,40 @@ $b$ & $c$ & $M_2^{\textsc{Static}}$ & """ + " & ".join(rf"\textbf{{{t}}}" for _,
 """)
 
 
+def tabla_arboles():
+    """Generalización a árboles sintéticos (salidas/arboles_sinteticos.json): rangos por número de grupos."""
+    ruta = C.SALIDAS / "arboles_sinteticos.json"
+    if not ruta.exists():
+        return
+    d = json.loads(ruta.read_text(encoding="utf-8"))
+    res = d["resultados"]
+    rg = lambda xs: f"[{min(xs):.1f}, {max(xs):.1f}]"
+    filas = []
+    for G in sorted({x["G"] for x in res}):
+        xs = [x for x in res if x["G"] == G]
+        v = lambda pol, m: rg([x["reduccion"][pol][m] for x in xs])
+        filas.append(f"{G} & {min(x['funciones'] for x in xs)}--{max(x['funciones'] for x in xs)} & {v('Solo barra', 'M1')} & "
+                     f"{v('Solo barra', 'M2')} & {v('Reordenado + barra', 'M2')} & {v('Solo barra', 'M2_memoria')} & "
+                     f"{v('Reordenado + barra', 'M2_memoria')} & {v('Reordenado', 'M2_memoria')} \\\\")
+    guardar("tab_trees.tex", r"""\begin{table}[htbp]
+\centering\scriptsize
+\setlength{\tabcolsep}{3pt}
+\caption{Reduction (\%) with respect to the static menu on synthetic menu trees ([minimum, maximum] over 4, 7 or 12 functions per group and 0, 30 or 60\% of the functions in submenus; """ + str(d["n_usuarios_por_arbol"]) + r""" simulated users per tree; negative values: slower than the static menu). Bar: suggestion bar above the unchanged menu; Reordered: groups and items sorted by frequency, without bar; Reord.\,+\,bar: both, equivalent to \textsc{Score-greedy} and \textsc{Proposed} by properties P1 and P2. Spatial memory: model of Section~\ref{sec:memory} with $b=0.15$~s/bit and $c=0.5$~s.}\label{tab:trees}
+\begin{tabular}{cccccccc}
+\toprule
+ & & \multicolumn{1}{c}{$M_1$} & \multicolumn{2}{c}{$M_2$, linear search} & \multicolumn{3}{c}{$M_2$, spatial memory} \\
+\cmidrule(lr){3-3}\cmidrule(lr){4-5}\cmidrule(lr){6-8}
+\textbf{Groups} & \textbf{Functions} & \textbf{Bar} & \textbf{Bar} & \textbf{Reord.\,+\,bar} & \textbf{Bar} & \textbf{Reord.\,+\,bar} & \textbf{Reordered} \\
+\midrule
+""" + "\n".join(filas) + r"""
+\bottomrule
+\end{tabular}
+\end{table}
+""")
+
+
 if __name__ == "__main__":
     tabla_corpus(); tabla_rq1(); tabla_dqn(); tabla_politicas(); tabla_ablacion(); tabla_subgrupos(); tabla_latencia(); tabla_calibracion()
-    tabla_memoria()
+    tabla_memoria(); tabla_arboles()
     figura_curvas(); figura_politicas(); figura_sensibilidad()
     print("[OK]", sorted(p.name for p in TAB.iterdir()), sorted(p.name for p in FIG.iterdir()))

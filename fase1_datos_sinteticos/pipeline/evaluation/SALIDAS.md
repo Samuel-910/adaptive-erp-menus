@@ -20,6 +20,7 @@ con los versionados; `evaluation/tablas.py` arma las tablas y figuras solo a par
 | Tabla 12 (latencia) | `tab_latency.tex` | `evaluation/salidas/rq4.json` (depende de la máquina) |
 | Tabla de calibración (§2.4.1) | `tab_calibration.tex` | `evaluation/salidas/calibracion.json` |
 | Tabla de memoria espacial (§3) | `tab_memory.tex` | `evaluation/salidas/memoria_espacial.json` |
+| Tabla de árboles sintéticos (§3) | `tab_trees.tex` | `evaluation/salidas/arboles_sinteticos.json` |
 | Fig. 2 (curvas de entrenamiento) | `fig_curves.png` | `OE2_Modelado/output_oe2/historial_{lstm,gru,cnn1d,transformer}.json` |
 | Fig. 3 (costo por política) | `fig_policies.png` | `rq2.json` |
 | Figura de sensibilidad (§3.6) | `fig_sensitivity.png` | `evaluation/salidas/sensibilidad_*.json` |
@@ -67,6 +68,7 @@ Todas las políticas se evaluaron con las mismas tareas y los mismos números al
 | `aproximacion_analitica.json` | Aproximación analítica de la reducción de clics, ΔM1 ≈ q·(d̄−1)/M1_static, para los 34 valores de sensibilidad: q de una barra ideal (fórmula cerrada con π_i ∝ w_i(1−w_i)) y q medido en la simulación, frente a la reducción simulada (r = 0.99). Lo genera `analitica.py` a partir de `sensibilidad_*.json`. |
 | `montecarlo.json` | Error estándar de Monte Carlo (MCSE) de cada reducción, diferencia absoluta por tarea, juicio frente al umbral de relevancia práctica (5 % y, para el tiempo, 0.1 s por tarea) y número de usuarios necesario para un IC 95 % de ±1 punto. Lo genera `montecarlo.py` a partir de `rq2_por_usuario.csv`; la columna MCSE de la Tabla 8 sale de aquí. |
 | `memoria_espacial.json` | Modelo secundario con memoria espacial (Cockburn et al. 2007, Hick-Hyman) y costo de reaprendizaje por ítem movido: reducción de M2 de cada política frente a Static para b = 0.10-0.20 s/bit y c = 0-1 s, y proporción de tareas con el ítem movido. Lo genera `memoria_espacial.py`; la tabla `tab_memory.tex` sale de aquí. |
+| `arboles_sinteticos.json` | Generalización (obs. 10): 36 árboles sintéticos (5-25 grupos, 4-12 funciones por grupo, 0-60 % en submenús; 300 usuarios cada uno). Reducción de M1 y M2 (modelo lineal y con memoria espacial) de la barra sola, del menú reordenado y del reordenado con barra. Lo genera `arboles_sinteticos.py`; la tabla `tab_trees.tex` sale de aquí. |
 | `rq4.json` | Latencia y tamaño (carga de modelos, generación del menú, bytes del menú, tamaño de modelos y agentes). Medido en la laptop del experimento; en otra máquina cambia. |
 
 ## Registros de entrenamiento
