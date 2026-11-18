@@ -17,6 +17,14 @@ Las salidas en `evaluation/salidas/` son las que se usaron en el manuscrito. Qu�
 **Para regenerar todas las tablas y figuras del artículo:** `python pipeline/reproducir_articulo.py`
 (sin reentrenar; compara el resultado con las salidas del manuscrito).
 
+Análisis de los supuestos del simulador (desde la versión 1.1), en `pipeline/evaluation/`:
+
+- `python sensibilidad.py`: sensibilidad al exponente Zipf, al número de funciones típicas, al tamaño de la barra, a los tiempos y a la probabilidad de error (`salidas/sensibilidad_*.json`, figura `fig_sensitivity.png`);
+- `python analitica.py`: aproximación analítica de la reducción de clics frente a la simulación (`salidas/aproximacion_analitica.json`);
+- `python calibracion.py --piloto <task_results.csv>`: sesión piloto frente a usuarios simulados (`salidas/calibracion.json`, tabla `tab_calibration.tex`); los registros del piloto no se incluyen, solo los valores agregados.
+
+`tablas.py` (y por tanto `reproducir_articulo.py`) arma la figura y la tabla a partir de esos JSON ya guardados.
+
 Opciones de `run_all_pipeline.py`:
 
 - sin opciones: genera los datos sintéticos y reentrena todo;
