@@ -20,6 +20,7 @@ con los versionados; `evaluation/tablas.py` arma las tablas y figuras solo a par
 | Tabla 12 (latencia) | `tab_latency.tex` | `evaluation/salidas/rq4.json` (depende de la máquina) |
 | Fig. 2 (curvas de entrenamiento) | `fig_curves.png` | `OE2_Modelado/output_oe2/historial_{lstm,gru,cnn1d,transformer}.json` |
 | Fig. 3 (costo por política) | `fig_policies.png` | `rq2.json` |
+| Figura de sensibilidad (§3.6) | `fig_sensitivity.png` | `evaluation/salidas/sensibilidad_*.json` |
 
 Las Tablas 8–11 son resúmenes (medias, IC bootstrap, Wilcoxon con Holm, tamaño de efecto)
 de `rq2_por_usuario.csv`, que contiene el resultado de **cada usuario con cada política**.

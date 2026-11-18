@@ -284,7 +284,37 @@ def figura_politicas():
     plt.close(fig)
 
 
+SENS = [("zipf", "s", "Zipf exponent $s$ of the usage profile"),
+        ("funciones", "n_funciones", "Typical functions per role"),
+        ("barra", "k_barra", "Functions in the suggestion bar"),
+        ("t_clic", "f_clic", "Time per click (factor)"),
+        ("t_scan", "f_scan", "Time per scanned item (factor)"),
+        ("error", "f_error", "Probability of a wrong visit (factor)")]
+
+
+def figura_sensibilidad():
+    """Reducción de M1 y M2 de Proposed frente a Static al variar un parámetro a la vez (salidas/sensibilidad_*.json)."""
+    fig, axs = plt.subplots(2, 3, figsize=(10, 5.6), sharey=True)
+    for k, (a, (nombre, clave, titulo)) in enumerate(zip(axs.flat, SENS)):
+        d = json.loads((C.SALIDAS / f"sensibilidad_{nombre}.json").read_text(encoding="utf-8"))
+        x = [r[clave] for r in d["resultados"]]
+        for m, col, ls, lab in [("M1", "#1f5fae", "-", "Clicks ($M_1$)"), ("M2", "#d95f02", "--", "Search time ($M_2$)")]:
+            p = [r["politicas"]["Proposed"][m] for r in d["resultados"]]
+            a.plot(x, [q["reduccion_pct"] for q in p], color=col, ls=ls, marker="o", ms=3.5, lw=1.6, label=lab)
+            a.fill_between(x, [q["ic95"][0] for q in p], [q["ic95"][1] for q in p], color=col, alpha=0.18, lw=0)
+        a.axvline(d["base"][clave], color="0.4", ls=":", lw=1)
+        a.set_title(f"({'abcdef'[k]}) {titulo}", fontsize=9)
+        a.grid(alpha=0.3)
+        a.tick_params(labelsize=8)
+    for a in axs[:, 0]:
+        a.set_ylabel("Reduction vs. Static (%)", fontsize=9)
+    axs[0, 0].legend(fontsize=8, loc="lower right")
+    fig.tight_layout()
+    fig.savefig(FIG / "fig_sensitivity.png", dpi=200)
+    plt.close(fig)
+
+
 if __name__ == "__main__":
     tabla_corpus(); tabla_rq1(); tabla_dqn(); tabla_politicas(); tabla_ablacion(); tabla_subgrupos(); tabla_latencia()
-    figura_curvas(); figura_politicas()
+    figura_curvas(); figura_politicas(); figura_sensibilidad()
     print("[OK]", sorted(p.name for p in TAB.iterdir()), sorted(p.name for p in FIG.iterdir()))
