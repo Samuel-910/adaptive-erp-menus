@@ -115,8 +115,19 @@ def rq1(usu_tr, seq_tr, usu_te, seq_te, nets):
         for r in s:
             mf[C.R2I[r]] += 1
     perfil_te = {u["user_id"]: u["perfil"] for u in usu_te}
+    rol_te = {u["user_id"]: u["rol"] for u in usu_te}
+    rol_tr = {u["user_id"]: u["rol"] for u in usu_tr}
+    prior_rol = {}                                            # frecuencia de cada ruta en el corpus del rol
+    for rol in C.ROLES:
+        c = np.zeros(V)
+        for uid, s in seq_tr.items():
+            if rol_tr.get(uid) == rol:
+                for r in s:
+                    c[C.R2I[r]] += 1
+        prior_rol[rol] = c / c.sum()
 
-    nombres = ["lstm", "gru", "cnn1d", "transformer", "markov", "mas_frecuente", "oraculo"]
+    nombres = ["lstm", "gru", "cnn1d", "transformer", "markov", "mas_frecuente",
+               "prior_rol", "conteo_ventana", "conteo_ventana_prior", "oraculo"]
     por_usuario = {n: defaultdict(lambda: defaultdict(list)) for n in nombres}
     for uid, s in seq_te.items():
         X = torch.tensor([ventana(s[:i]) for i in range(1, len(s))])
@@ -126,8 +137,15 @@ def rq1(usu_tr, seq_tr, usu_te, seq_te, nets):
             y, prev = C.R2I[s[i]], C.R2I[s[i - 1]]
             orc = np.array([perfil_te[uid].get(r, 0.0) for r in C.RUTAS])
             orc[prev] = 0.0                                   # la app no repite la tarea anterior
+            pr = prior_rol[rol_te[uid]].copy()
+            pr[prev] = 0.0
+            cv = np.zeros(V)                                  # conteo en la ventana del modelo (últimas SEQ_LEN rutas)
+            for r in s[max(0, i - C.SEQ_LEN):i]:
+                cv[C.R2I[r]] += 1
+            cv[prev] = 0.0
             sc = {**{n: P[n][k] for n in P}, "markov": trans[prev] + 1e-9 * mf,
-                  "mas_frecuente": mf.copy(), "oraculo": orc}
+                  "mas_frecuente": mf.copy(), "prior_rol": pr, "conteo_ventana": cv,
+                  "conteo_ventana_prior": cv + pr, "oraculo": orc}
             for n, v in sc.items():
                 rk = rango_pesimista(v, y)
                 d = por_usuario[n][uid]
@@ -159,6 +177,15 @@ def rq1(usu_tr, seq_tr, usu_te, seq_te, nets):
         w = stats.wilcoxon(a, b, alternative="greater")
         res[f"wilcoxon_{sel}_vs_{base}"] = {"W": float(w.statistic), "p": float(w.pvalue),
                                            "diff_media_mrr": float(np.mean(a) - np.mean(b))}
+    for base in ["prior_rol", "conteo_ventana", "conteo_ventana_prior"]:      # observación 6: bilateral
+        a = [np.mean(por_usuario[sel][u]["mrr"]) for u in usuarios]
+        b = [np.mean(por_usuario[base][u]["mrr"]) for u in usuarios]
+        w = stats.wilcoxon(a, b, alternative="two-sided")
+        res[f"wilcoxon_{sel}_vs_{base}"] = {"W": float(w.statistic), "p": float(w.pvalue),
+                                           "diff_media_mrr": float(np.mean(a) - np.mean(b)),
+                                           "r_rb": r_rb(np.array(a), np.array(b))}
+    res["parametros"] = {n: int(sum(p.numel() for p in nets[n].parameters()))
+                         for n in ["lstm", "gru", "cnn1d", "transformer"]}
     C.guardar_json("rq1.json", res)
     return sel
 

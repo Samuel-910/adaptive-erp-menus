@@ -57,7 +57,7 @@ Todas las políticas se evaluaron con las mismas tareas y los mismos números al
 
 | Archivo | Contenido |
 |---|---|
-| `rq1.json` | RQ1: métricas de prueba de LSTM, GRU, 1D-CNN, Transformer y de las referencias (Markov, más frecuente, oráculo); resumen del entrenamiento de cada modelo (mejor época, pérdida de validación); modelo seleccionado; pruebas de Wilcoxon. |
+| `rq1.json` | RQ1: métricas de prueba de LSTM, GRU, 1D-CNN, Transformer y de las referencias (Markov, más frecuente, prior del rol, conteo en la ventana, conteo en la ventana + prior del rol, oráculo); número de parámetros de cada red; resumen del entrenamiento de cada modelo (mejor época, pérdida de validación); modelo seleccionado; pruebas de Wilcoxon. |
 | `dqn.json` | Calidad de las cabeceras ordenadas por los agentes DQN, por tamaño de grupo (grupos evaluados, % óptimo, φ medio y mínimo, pasos). |
 | `rq2.json` | Resúmenes estadísticos de las Tablas 8–11 calculados a partir de `rq2_por_usuario.csv`. |
 | `rq2_dqn_optimo.json` | Porcentaje de grupos en los que el agente alcanza el orden óptimo durante la evaluación de políticas. |

@@ -17,7 +17,8 @@ TAB.mkdir(parents=True, exist_ok=True)
 FIG.mkdir(parents=True, exist_ok=True)
 ROL_EN = {"Ventas": "Sales", "Compras": "Purchasing", "Almacen": "Warehouse", "Administrador": "Administrator"}
 MOD_EN = {"lstm": "LSTM", "gru": "GRU", "cnn1d": "1D-CNN", "transformer": "Transformer",
-          "markov": "First-order Markov", "mas_frecuente": "Most frequent route", "oraculo": "True profile (ceiling)"}
+          "markov": "First-order Markov", "mas_frecuente": "Most frequent route", "oraculo": "True profile (ceiling)",
+          "prior_rol": "Role prior", "conteo_ventana": "Count in window", "conteo_ventana_prior": "Count in window + role prior"}
 POL = ["Static", "Frequency", "Score-greedy", "Proposed"]
 POL_TEX = {p: r"\textsc{" + p + "}" for p in POL}
 
@@ -67,7 +68,9 @@ def tabla_corpus():
 def tabla_rq1():
     r = C.leer_json("rq1.json")
     filas = []
-    for n in ["lstm", "gru", "cnn1d", "transformer", "markov", "mas_frecuente", "oraculo"]:
+    par = r.get("parametros", {})
+    for n in ["lstm", "gru", "cnn1d", "transformer", "markov", "mas_frecuente", "prior_rol", "conteo_ventana",
+              "conteo_ventana_prior", "oraculo"]:
         m = r["modelos"][n]
         h = r["historial"].get(n)
         vl = f"{h['val_loss']:.4f}" if h else "--"
@@ -78,14 +81,15 @@ def tabla_rq1():
             filas.append(r"\midrule")
         if n == "oraculo":
             filas.append(r"\midrule")
-        filas.append(f"{nom} & {vl} & {ep} & " + " & ".join(cel) + r" \\")
+        pp = f"{par[n]:,}".replace(",", "{,}") if n in par else "--"
+        filas.append(f"{nom} & {pp} & {vl} & {ep} & " + " & ".join(cel) + r" \\")
     guardar("tab_rq1.tex", r"""\begin{table}[htbp]
 \centering\scriptsize
 \setlength{\tabcolsep}{3pt}
-\caption{Next-route prediction on """ + str(r["n_usuarios_prueba"]) + r""" new simulated users not seen in training (""" + f"{r['n_muestras']:,}".replace(",", "{,}") + r""" predictions; mean over users with bootstrapped 95\% CI). Val.\ loss: lowest validation cross-entropy (selection criterion); Epoch: best/total epochs. Ties ranked pessimistically. The true-profile row is a theoretical ceiling, not a model.}\label{tab:seq}
-\begin{tabular}{lcccccc}
+\caption{Next-route prediction on """ + str(r["n_usuarios_prueba"]) + r""" new simulated users not seen in training (""" + f"{r['n_muestras']:,}".replace(",", "{,}") + r""" predictions; mean over users with bootstrapped 95\% CI). Params: trainable parameters; Val.\ loss: lowest validation cross-entropy (selection criterion); Epoch: best/total epochs (limit 50). Count in window: occurrences of each route in the last ten routes of the session; role prior: frequency of each route in the training corpus of the role; the previous route is excluded in both, as the task protocol never repeats it. Ties ranked pessimistically. The true-profile row is a theoretical ceiling, not a model.}\label{tab:seq}
+\begin{tabular}{lccccccc}
 \toprule
-\textbf{Model} & \textbf{Val.\ loss} & \textbf{Epoch} & \textbf{Acc@1} & \textbf{Acc@3} & \textbf{MRR} & \textbf{NDCG@5} \\
+\textbf{Model} & \textbf{Params} & \textbf{Val.\ loss} & \textbf{Epoch} & \textbf{Acc@1} & \textbf{Acc@3} & \textbf{MRR} & \textbf{NDCG@5} \\
 \midrule
 """ + "\n".join(filas) + r"""
 \bottomrule
