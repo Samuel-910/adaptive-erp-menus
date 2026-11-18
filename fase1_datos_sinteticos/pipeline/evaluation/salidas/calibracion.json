@@ -1,0 +1,56 @@
+{
+  "rol": "Administrador",
+  "experiencia": "ninguna",
+  "n_tareas_piloto": 40,
+  "n_usuarios_simulados": 46,
+  "medidas": {
+    "clics_b1": {
+      "piloto": 5.294117647058823,
+      "sim_mediana": 5.0588235294117645,
+      "sim_p5": 3.7058823529411766,
+      "sim_p95": 6.6911764705882355
+    },
+    "clics_b2": {
+      "piloto": 2.4,
+      "sim_mediana": 3.15,
+      "sim_p5": 2.5625,
+      "sim_p95": 4.125
+    },
+    "error_b1": {
+      "piloto": 0.11764705882352941,
+      "sim_mediana": 0.23529411764705882,
+      "sim_p5": 0.11764705882352941,
+      "sim_p95": 0.39705882352941174
+    },
+    "error_b2": {
+      "piloto": 0.0,
+      "sim_mediana": 0.125,
+      "sim_p5": 0.05,
+      "sim_p95": 0.2875
+    },
+    "tiempo_med_b1": {
+      "piloto": 15.616,
+      "sim_mediana": 15.628499999999999,
+      "sim_p5": 12.92675,
+      "sim_p95": 18.04775
+    },
+    "tiempo_med_b2": {
+      "piloto": 10.031500000000001,
+      "sim_mediana": 10.679,
+      "sim_p5": 9.6425,
+      "sim_p95": 12.396125
+    },
+    "tiempo_practica": {
+      "piloto": 73.32066666666667,
+      "sim_mediana": 51.188500000000005,
+      "sim_p5": 31.307583333333334,
+      "sim_p95": 95.1735
+    },
+    "razon_b2_b1": {
+      "piloto": 0.6423860143442623,
+      "sim_mediana": 0.675254547130234,
+      "sim_p5": 0.5665717119777536,
+      "sim_p95": 0.8705890653479095
+    }
+  }
+}

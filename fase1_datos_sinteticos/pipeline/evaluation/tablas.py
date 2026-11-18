@@ -284,6 +284,37 @@ def figura_politicas():
     plt.close(fig)
 
 
+CALIB = [("clics_b1", "Clicks per task, block 1", "{:.2f}"), ("clics_b2", "Clicks per task, block 2", "{:.2f}"),
+         ("error_b1", "Tasks with a wrong visit, block 1 (\\%)", "pct"), ("error_b2", "Tasks with a wrong visit, block 2 (\\%)", "pct"),
+         ("tiempo_med_b1", "Median time per task, block 1 (s)", "{:.1f}"), ("tiempo_med_b2", "Median time per task, block 2 (s)", "{:.1f}"),
+         ("tiempo_practica", "Mean time per practice task (s)", "{:.1f}"), ("razon_b2_b1", "Median time, block 2 / block 1", "{:.2f}")]
+
+
+def tabla_calibracion():
+    """Sesión piloto frente a usuarios simulados del mismo rol y experiencia (salidas/calibracion.json)."""
+    ruta = C.SALIDAS / "calibracion.json"
+    if not ruta.exists():
+        return
+    d = json.loads(ruta.read_text(encoding="utf-8"))
+    f = lambda v, fmt: f"{100 * v:.0f}" if fmt == "pct" else fmt.format(v)
+    filas = []
+    for k, etiqueta, fmt in CALIB:
+        m = d["medidas"][k]
+        filas.append(f"{etiqueta} & {f(m['piloto'], fmt)} & {f(m['sim_mediana'], fmt)} [{f(m['sim_p5'], fmt)}, {f(m['sim_p95'], fmt)}] \\\\")
+    guardar("tab_calibration.tex", r"""\begin{table}[htbp]
+\centering\small
+\caption{Calibration check: pilot session of a member of the research team (Administrator role, no prior experience, static menu; practice tasks excluded except in their own row) and the """ + str(d["n_usuarios_simulados"]) + r""" simulated users with the same role and experience level (median and 5th--95th percentile of the per-user values).}\label{tab:calibration}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Measure} & \textbf{Pilot} & \textbf{Simulated, median [p5, p95]} \\
+\midrule
+""" + "\n".join(filas) + r"""
+\bottomrule
+\end{tabular}
+\end{table}
+""")
+
+
 SENS = [("zipf", "s", "Zipf exponent $s$ of the usage profile"),
         ("funciones", "n_funciones", "Typical functions per role"),
         ("barra", "k_barra", "Functions in the suggestion bar"),
@@ -315,6 +346,6 @@ def figura_sensibilidad():
 
 
 if __name__ == "__main__":
-    tabla_corpus(); tabla_rq1(); tabla_dqn(); tabla_politicas(); tabla_ablacion(); tabla_subgrupos(); tabla_latencia()
+    tabla_corpus(); tabla_rq1(); tabla_dqn(); tabla_politicas(); tabla_ablacion(); tabla_subgrupos(); tabla_latencia(); tabla_calibracion()
     figura_curvas(); figura_politicas(); figura_sensibilidad()
     print("[OK]", sorted(p.name for p in TAB.iterdir()), sorted(p.name for p in FIG.iterdir()))

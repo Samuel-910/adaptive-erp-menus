@@ -18,6 +18,7 @@ con los versionados; `evaluation/tablas.py` arma las tablas y figuras solo a par
 | Tabla 10 (ablación) | `tab_ablation.tex` | `rq2.json` → `ablacion` |
 | Tabla 11 (pesos del puntaje) | `tab_weights.tex` | `rq2.json` → `pesos` |
 | Tabla 12 (latencia) | `tab_latency.tex` | `evaluation/salidas/rq4.json` (depende de la máquina) |
+| Tabla de calibración (§2.4.1) | `tab_calibration.tex` | `evaluation/salidas/calibracion.json` |
 | Fig. 2 (curvas de entrenamiento) | `fig_curves.png` | `OE2_Modelado/output_oe2/historial_{lstm,gru,cnn1d,transformer}.json` |
 | Fig. 3 (costo por política) | `fig_policies.png` | `rq2.json` |
 | Figura de sensibilidad (§3.6) | `fig_sensitivity.png` | `evaluation/salidas/sensibilidad_*.json` |
@@ -61,6 +62,7 @@ Todas las políticas se evaluaron con las mismas tareas y los mismos números al
 | `rq2.json` | Resúmenes estadísticos de las Tablas 8–11 calculados a partir de `rq2_por_usuario.csv`. |
 | `rq2_dqn_optimo.json` | Porcentaje de grupos en los que el agente alcanza el orden óptimo durante la evaluación de políticas. |
 | `sensibilidad_<parámetro>.json` | Sensibilidad (observación 4): un parámetro a la vez, los demás como en el artículo (*s* = 1, 8 funciones típicas, barra de 3, Tabla 2 sin cambios). `zipf`: exponente *s* del perfil (0.5–2); `funciones`: funciones típicas por rol (5–15); `barra`: tamaño de la barra (1–5); `t_clic` y `t_scan`: factor sobre el tiempo por clic y por ítem escaneado de la Tabla 2 (0.5–1.5); `error`: factor sobre la probabilidad de visita errónea (0–2). Para cada valor: proporción de tareas servidas por la barra y M1–M3 de Static, Frequency, Score-greedy, Proposed y solo barra, con reducción frente a Static e IC 95 % (`null` si Static no tiene errores). Los genera `sensibilidad.py` (no lo corre `reproducir_articulo.py`). |
+| `calibracion.json` | Sesión piloto de un miembro del equipo (Administrador, sin experiencia, menú estático) frente a los 46 usuarios simulados del mismo rol y experiencia: clics, tareas con visita errónea y tiempos por bloque. **Solo valores agregados**; los registros del piloto no se publican. Lo genera `calibracion.py --piloto <task_results.csv>`. |
 | `rq4.json` | Latencia y tamaño (carga de modelos, generación del menú, bytes del menú, tamaño de modelos y agentes). Medido en la laptop del experimento; en otra máquina cambia. |
 
 ## Registros de entrenamiento
