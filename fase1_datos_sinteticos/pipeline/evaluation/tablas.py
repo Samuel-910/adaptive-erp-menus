@@ -29,10 +29,8 @@ def guardar(nombre, cuerpo):
 
 
 def fp(p):
-    if p < 0.001:
-        e = int(np.floor(np.log10(max(p, 1e-300))))
-        return rf"$<10^{{{e + 1}}}$"
-    return f"{p:.3f}"
+    """Valores p secundarios (observación 8): por debajo de 0.001 solo se informa '< 0.001'."""
+    return r"$<0.001$" if p < 0.001 else f"{p:.3f}"
 
 
 def tabla_corpus():
@@ -123,6 +121,11 @@ def _celda(md, c):
 
 def tabla_politicas(clave="principal", nombre="tab_policies.tex", etiqueta="tab:cost", titulo=None):
     r = C.leer_json("rq2.json")[clave]
+    mc = {}
+    if (C.SALIDAS / "montecarlo.json").exists():
+        for f in C.leer_json("montecarlo.json")["comparaciones"]:
+            if f["escenario"] == "base" and f["referencia"] == "Static":
+                mc[f["politica"]] = f
     filas = []
     unidades = {"M1": "$M_1$ (clicks)", "M2": "$M_2$ (s)", "M3": "$M_3$ (error rate)"}
     for m in ["M1", "M2", "M3"]:
@@ -133,25 +136,26 @@ def tabla_politicas(clave="principal", nombre="tab_policies.tex", etiqueta="tab:
             dec = 3
             med = f"{v['mediana']:.{dec}f} [{v['q1']:.{dec}f}, {v['q3']:.{dec}f}]"
             if c == "Static":
-                red, ph, rr = "--", "--", "--"
+                red, se, ph, rr = "--", "--", "--", "--"
             else:
                 red = f"{v['reduccion_vs_static_pct']:.1f} [{v['ic95'][0]:.1f}, {v['ic95'][1]:.1f}]"
+                se = f"{mc[c][m]['mcse_pct']:.2f}" if c in mc else "--"
                 p = pares[("Static", c)]
                 ph, rr = fp(p["p_holm"]), f"{p['r_rb']:.2f}"
-            filas.append(f"{unidades[m] if i == 0 else ''} & {POL_TEX[c]} & {v['media']:.3f} & {med} & {red} & {ph} & {rr} \\\\")
+            filas.append(f"{unidades[m] if i == 0 else ''} & {POL_TEX[c]} & {v['media']:.3f} & {med} & {red} & {se} & {ph} & {rr} \\\\")
         fr = md["friedman"]
-        filas.append(rf"\multicolumn{{7}}{{l}}{{\footnotesize Friedman $\chi^2({fr['gl']})={fr['chi2']:.1f}$, $p$ {fp(fr['p'])}; \textsc{{Proposed}} vs.\ \textsc{{Score-greedy}}: $p_{{\mathrm{{Holm}}}}$ = {fp(pares[('Score-greedy', 'Proposed')]['p_holm'])}, $r_{{rb}}$ = {pares[('Score-greedy', 'Proposed')]['r_rb']:.2f}}} \\")
+        filas.append(rf"\multicolumn{{8}}{{l}}{{\footnotesize Friedman $\chi^2({fr['gl']})={fr['chi2']:.1f}$, $p$ {fp(fr['p'])}; \textsc{{Proposed}} vs.\ \textsc{{Score-greedy}}: $p_{{\mathrm{{Holm}}}}$ = {fp(pares[('Score-greedy', 'Proposed')]['p_holm'])}, $r_{{rb}}$ = {pares[('Score-greedy', 'Proposed')]['r_rb']:.2f}}} \\")
         if m != "M3":
             filas.append(r"\midrule")
     titulo = titulo or (r"Navigation cost measured on the evaluation tasks for each policy ($n=" + str(r["n_usuarios"]) +
-                        r"$ users; per-user means). Reduction: relative reduction of the mean with respect to \textsc{Static} with bootstrapped 95\% CI; $p_{\mathrm{Holm}}$: two-sided Wilcoxon signed-rank test against \textsc{Static} with Holm correction over the six pairwise comparisons; $r_{rb}$: matched-pairs rank-biserial correlation (positive = lower cost than \textsc{Static}).")
+                        r"$ users; per-user means). Reduction: relative reduction of the mean with respect to \textsc{Static} with bootstrapped 95\% CI; MCSE: Monte Carlo standard error of the reduction (percentage points; bootstrap over users); $p_{\mathrm{Holm}}$ (secondary, see Section~\ref{sec:stats}): two-sided Wilcoxon signed-rank test against \textsc{Static} with Holm correction over the six pairwise comparisons; $r_{rb}$: matched-pairs rank-biserial correlation (positive = lower cost than \textsc{Static}).")
     guardar(nombre, r"""\begin{table}[htbp]
 \centering\scriptsize
 \setlength{\tabcolsep}{3pt}
 \caption{""" + titulo + r"""}\label{""" + etiqueta + r"""}
-\begin{tabular}{llccccc}
+\begin{tabular}{llcccccc}
 \toprule
-\textbf{Metric} & \textbf{Policy} & \textbf{Mean} & \textbf{Median [IQR]} & \textbf{Reduction \% [95\% CI]} & \textbf{$p_{\mathrm{Holm}}$} & \textbf{$r_{rb}$} \\
+\textbf{Metric} & \textbf{Policy} & \textbf{Mean} & \textbf{Median [IQR]} & \textbf{Reduction \% [95\% CI]} & \textbf{MCSE} & \textbf{$p_{\mathrm{Holm}}$} & \textbf{$r_{rb}$} \\
 \midrule
 """ + "\n".join(filas) + r"""
 \bottomrule

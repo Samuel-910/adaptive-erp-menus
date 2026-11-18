@@ -1,0 +1,276 @@
+{
+  "umbral_pct": 5.0,
+  "umbral_s": 0.1,
+  "comparaciones": [
+    {
+      "escenario": "base",
+      "politica": "Proposed",
+      "referencia": "Static",
+      "n": 600,
+      "M1": {
+        "reduccion_pct": 31.63998487331402,
+        "mcse_pct": 0.25716507453846876,
+        "diferencia_media": 0.7320833333333333,
+        "mcse_diferencia": 0.008047818244791921,
+        "relevante": true,
+        "n_para_semiancho_1pp": 153
+      },
+      "M2": {
+        "reduccion_pct": 26.976994599967917,
+        "mcse_pct": 0.3472297475559553,
+        "diferencia_media": 1.0555897973714816,
+        "mcse_diferencia": 0.02169122646335225,
+        "relevante": true,
+        "n_para_semiancho_1pp": 278
+      },
+      "M3": {
+        "reduccion_pct": 2.450229709035223,
+        "mcse_pct": 0.3771783350013358,
+        "diferencia_media": 0.0020000000000000005,
+        "mcse_diferencia": 0.00031802639859907655,
+        "relevante": false,
+        "n_para_semiancho_1pp": 328
+      }
+    },
+    {
+      "escenario": "base",
+      "politica": "Score-greedy",
+      "referencia": "Static",
+      "n": 600,
+      "M1": {
+        "reduccion_pct": 31.623777709747714,
+        "mcse_pct": 0.25822201706971937,
+        "diferencia_media": 0.7317083333333333,
+        "mcse_diferencia": 0.008051919025633745,
+        "relevante": true,
+        "n_para_semiancho_1pp": 154
+      },
+      "M2": {
+        "reduccion_pct": 26.918212058041235,
+        "mcse_pct": 0.3487960150511117,
+        "diferencia_media": 1.0532896800885339,
+        "mcse_diferencia": 0.021733419122070382,
+        "relevante": true,
+        "n_para_semiancho_1pp": 281
+      },
+      "M3": {
+        "reduccion_pct": 2.450229709035223,
+        "mcse_pct": 0.3771783350013358,
+        "diferencia_media": 0.0020000000000000005,
+        "mcse_diferencia": 0.00031802639859907655,
+        "relevante": false,
+        "n_para_semiancho_1pp": 328
+      }
+    },
+    {
+      "escenario": "base",
+      "politica": "Frequency",
+      "referencia": "Static",
+      "n": 600,
+      "M1": {
+        "reduccion_pct": -0.07563342997605194,
+        "mcse_pct": 0.0245764284939239,
+        "diferencia_media": -0.001749999999999996,
+        "mcse_diferencia": 0.0005611283746754283,
+        "relevante": false,
+        "n_para_semiancho_1pp": 2
+      },
+      "M2": {
+        "reduccion_pct": 12.549633033144293,
+        "mcse_pct": 0.20194793757737964,
+        "diferencia_media": 0.49105783601850833,
+        "mcse_diferencia": 0.01150517289979165,
+        "relevante": true,
+        "n_para_semiancho_1pp": 95
+      },
+      "M3": {
+        "reduccion_pct": 0.0,
+        "mcse_pct": 0.0,
+        "diferencia_media": 0.0,
+        "mcse_diferencia": 0.0,
+        "relevante": false,
+        "n_para_semiancho_1pp": 0
+      }
+    },
+    {
+      "escenario": "base",
+      "politica": "A2 solo barra",
+      "referencia": "Static",
+      "n": 600,
+      "M1": {
+        "reduccion_pct": 31.645387261169443,
+        "mcse_pct": 0.25748076676178044,
+        "diferencia_media": 0.7322083333333333,
+        "mcse_diferencia": 0.008029569198912612,
+        "relevante": true,
+        "n_para_semiancho_1pp": 153
+      },
+      "M2": {
+        "reduccion_pct": 25.29836418097471,
+        "mcse_pct": 0.34258194825501864,
+        "diferencia_media": 0.9899062336490518,
+        "mcse_diferencia": 0.020640178443267668,
+        "relevante": true,
+        "n_para_semiancho_1pp": 271
+      },
+      "M3": {
+        "reduccion_pct": 2.450229709035223,
+        "mcse_pct": 0.3771783350013358,
+        "diferencia_media": 0.0020000000000000005,
+        "mcse_diferencia": 0.00031802639859907655,
+        "relevante": false,
+        "n_para_semiancho_1pp": 328
+      }
+    },
+    {
+      "escenario": "base",
+      "politica": "A1 sin barra",
+      "referencia": "Static",
+      "n": 600,
+      "M1": {
+        "reduccion_pct": -0.07563342997605194,
+        "mcse_pct": 0.024487779095648816,
+        "diferencia_media": -0.001749999999999996,
+        "mcse_diferencia": 0.0005611283746754283,
+        "relevante": false,
+        "n_para_semiancho_1pp": 2
+      },
+      "M2": {
+        "reduccion_pct": 12.24655971640387,
+        "mcse_pct": 0.20518080352480436,
+        "diferencia_media": 0.47919880183954483,
+        "mcse_diferencia": 0.011483749110433164,
+        "relevante": true,
+        "n_para_semiancho_1pp": 98
+      },
+      "M3": {
+        "reduccion_pct": 0.0,
+        "mcse_pct": 0.0,
+        "diferencia_media": 0.0,
+        "mcse_diferencia": 0.0,
+        "relevante": false,
+        "n_para_semiancho_1pp": 0
+      }
+    },
+    {
+      "escenario": "base",
+      "politica": "Proposed",
+      "referencia": "Score-greedy",
+      "n": 600,
+      "M1": {
+        "reduccion_pct": 0.0237029233605468,
+        "mcse_pct": 0.020944760119480016,
+        "diferencia_media": 0.00037500000000000017,
+        "mcse_diferencia": 0.0003306400304200834,
+        "relevante": false,
+        "n_para_semiancho_1pp": 2
+      },
+      "M2": {
+        "reduccion_pct": 0.08043391326627569,
+        "mcse_pct": 0.024625969154416342,
+        "diferencia_media": 0.002300117282947638,
+        "mcse_diferencia": 0.0007046108548557581,
+        "relevante": false,
+        "n_para_semiancho_1pp": 2
+      },
+      "M3": {
+        "reduccion_pct": 0.0,
+        "mcse_pct": 0.0,
+        "diferencia_media": 0.0,
+        "mcse_diferencia": 0.0,
+        "relevante": false,
+        "n_para_semiancho_1pp": 0
+      }
+    },
+    {
+      "escenario": "base",
+      "politica": "Proposed",
+      "referencia": "A2 solo barra",
+      "n": 600,
+      "M1": {
+        "reduccion_pct": -0.007903472258807831,
+        "mcse_pct": 0.04365660333764662,
+        "diferencia_media": -0.0001249999999999992,
+        "mcse_diferencia": 0.000678830922847608,
+        "relevante": false,
+        "n_para_semiancho_1pp": 5
+      },
+      "M2": {
+        "reduccion_pct": 2.247113333715889,
+        "mcse_pct": 0.18176977600199673,
+        "diferencia_media": 0.06568356372242977,
+        "mcse_diferencia": 0.005509726968194695,
+        "relevante": false,
+        "n_para_semiancho_1pp": 77
+      },
+      "M3": {
+        "reduccion_pct": 0.0,
+        "mcse_pct": 0.0,
+        "diferencia_media": 0.0,
+        "mcse_diferencia": 0.0,
+        "relevante": false,
+        "n_para_semiancho_1pp": 0
+      }
+    },
+    {
+      "escenario": "base",
+      "politica": "Proposed",
+      "referencia": "A3 beta=0",
+      "n": 600,
+      "M1": {
+        "reduccion_pct": -0.176808993508204,
+        "mcse_pct": 0.10248257072457265,
+        "diferencia_media": -0.002791666666666667,
+        "mcse_diferencia": 0.0015887744060555117,
+        "relevante": false,
+        "n_para_semiancho_1pp": 25
+      },
+      "M2": {
+        "reduccion_pct": -0.172077199291798,
+        "mcse_pct": 0.11840764883073517,
+        "diferencia_media": -0.004908377668394214,
+        "mcse_diferencia": 0.0033073278659437972,
+        "relevante": false,
+        "n_para_semiancho_1pp": 33
+      },
+      "M3": {
+        "reduccion_pct": 0.0,
+        "mcse_pct": 0.0,
+        "diferencia_media": 0.0,
+        "mcse_diferencia": 0.0,
+        "relevante": false,
+        "n_para_semiancho_1pp": 0
+      }
+    },
+    {
+      "escenario": "deriva",
+      "politica": "Proposed",
+      "referencia": "Static",
+      "n": 600,
+      "M1": {
+        "reduccion_pct": 26.088677039302087,
+        "mcse_pct": 0.3248860448762698,
+        "diferencia_media": 0.6043333333333334,
+        "mcse_diferencia": 0.008760474823002844,
+        "relevante": true,
+        "n_para_semiancho_1pp": 244
+      },
+      "M2": {
+        "reduccion_pct": 19.2783235373163,
+        "mcse_pct": 0.46904932623226486,
+        "diferencia_media": 0.7543390633555624,
+        "mcse_diferencia": 0.021760228204965325,
+        "relevante": true,
+        "n_para_semiancho_1pp": 508
+      },
+      "M3": {
+        "reduccion_pct": 2.1341463414634165,
+        "mcse_pct": 0.3384361700166978,
+        "diferencia_media": 0.0017499999999999996,
+        "mcse_diferencia": 0.00027992814484636687,
+        "relevante": false,
+        "n_para_semiancho_1pp": 265
+      }
+    }
+  ]
+}
